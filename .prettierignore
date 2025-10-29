@@ -1,0 +1,6 @@
+node_modules/
+.expo/
+.expo-shared/
+dist/
+package-lock.json
+global.d.ts
