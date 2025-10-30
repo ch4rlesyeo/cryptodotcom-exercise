@@ -8,6 +8,7 @@ module.exports = {
     'plugin:import/recommended',
     'plugin:import/typescript',
     'plugin:prettier/recommended',
+    'plugin:tailwindcss/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -45,9 +46,21 @@ module.exports = {
     },
   },
   rules: {
+    'no-console': 'error',
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+
+    // Tailwind css total classes
+    'no-restricted-syntax': [
+      'warn',
+      {
+        selector:
+          'JSXAttribute[name.name="className"][value.value=/(?:\\S+\\s+){3,}/]',
+        message:
+          'className has 3+ classes. Consider using clsx() or classname utilities.',
+      },
+    ],
 
     // TypeScript naming conventions
     '@typescript-eslint/naming-convention': [

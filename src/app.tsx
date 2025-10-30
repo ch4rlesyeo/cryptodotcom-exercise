@@ -5,14 +5,18 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as SplashScreen from 'expo-splash-screen';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import CurrencySearch from '@/screens/currency-search';
 import Home from '@/screens/home';
+import type { TStackParams } from '@/types/navigation';
 import { useCustomFonts } from '@/utils/hooks/use-custom-fonts';
 import { useSplashScreen } from '@/utils/hooks/use-splash-screen';
 
-const Stack = createNativeStackNavigator();
+import { applyCssInterops } from './utils/helpers/styling';
 
-// Keep the splash screen visible while fetching essential resources
+export const Stack = createNativeStackNavigator<TStackParams>();
+
 SplashScreen.preventAutoHideAsync();
+applyCssInterops();
 
 export default function App() {
   const { fontsLoaded, fontError } = useCustomFonts();
@@ -29,6 +33,11 @@ export default function App() {
           <Stack.Screen
             name="Home"
             component={Home}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="CurrencySearch"
+            component={CurrencySearch}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

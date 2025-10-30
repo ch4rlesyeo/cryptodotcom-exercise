@@ -1,11 +1,12 @@
-import { SafeAreaView } from 'react-native-safe-area-context';
-
 import Home from '@/components/home';
+import { ScreenRootView } from '@/components/ui/screen-root-view';
 
-export default function HomeScreen() {
+const HomeScreen: FC = () => {
   return (
-    <SafeAreaView className="flex-1">
+    <ScreenRootView>
       <Home />
-    </SafeAreaView>
+    </ScreenRootView>
   );
-}
+};
+
+export default HomeScreen;
