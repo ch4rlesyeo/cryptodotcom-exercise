@@ -31,6 +31,11 @@ const HomeTabs: FC = () => {
     pagerRef?.current?.setPage(pageIndex);
   };
 
+  const handleGoToMarketPress = () => {
+    setCurrentPage(mainTabOptions[1].pageIndex);
+    pagerRef?.current?.setPage(mainTabOptions[1].pageIndex);
+  };
+
   return (
     <View className="flex-1">
       <Block className="mt-3 border-b border-slate-200">
@@ -49,7 +54,7 @@ const HomeTabs: FC = () => {
         onPageSelected={(e) => setCurrentPage(e.nativeEvent.position)}
       >
         <View key={mainTabOptions[0].value} className="flex-1">
-          <FavouritesTab />
+          <FavouritesTab onGoToMarketPress={handleGoToMarketPress} />
         </View>
         <View key={mainTabOptions[1].value} className="flex-1">
           <MarketTab />

@@ -1,6 +1,8 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-import { ITextInputProps, TextInput } from './index';
+import type { ITextInputProps } from '@/types/components/ui/text-input';
+
+import { TextInput } from './index';
 
 const SearchTextInput: FC<ITextInputProps> = (props) => {
   return (

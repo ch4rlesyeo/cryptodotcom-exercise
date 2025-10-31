@@ -1,20 +1,13 @@
-import { ScrollView } from 'react-native';
-
-import { CurrencySelector } from '@/components/ui/currency/selector';
 import { fiatCurrencies } from '@/data/currencies';
+
+import CurrencyList from './currency-list';
 
 const MarketTabFiat: FC = () => {
   const sortedFiatCurrencies = [...fiatCurrencies].sort((a, b) =>
     a.name.localeCompare(b.name)
   );
 
-  return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      {sortedFiatCurrencies.map((currency) => {
-        return <CurrencySelector key={currency.id} currency={currency} />;
-      })}
-    </ScrollView>
-  );
+  return <CurrencyList currencies={sortedFiatCurrencies} />;
 };
 
 export default MarketTabFiat;

@@ -1,6 +1,3 @@
-import Feather from '@expo/vector-icons/Feather';
-import { Pressable, View } from 'react-native';
-
 import { Block } from '@/components/ui/block';
 import { SearchTextInput } from '@/components/ui/text-input/search';
 import { useNavigation } from '@/utils/hooks/use-navigation';
@@ -19,11 +16,6 @@ const HomeHeader: FC = () => {
         editable={false}
         placeholder="Search currency here"
       />
-      <View className="justify-center pl-4">
-        <Pressable>
-          <Feather name="menu" size={22} className="text-slate-700" />
-        </Pressable>
-      </View>
     </Block>
   );
 };
