@@ -1,24 +1,37 @@
-import type { ICurrency } from '@/types/data/currencies';
+import { ICurrency } from '@/types/data/currencies';
+
+const trimAllWhitespaces = (value: string) => {
+  return value.trim();
+};
+
+const matchesSpacePrefixed = (match: string, keyword: string) => {
+  const pattern = new RegExp(`(?:^|\\s)${keyword}`, 'i');
+
+  return pattern.test(match);
+};
 
 export const searchCurrencyWithKeyword = (
   keyword: string,
   currency: ICurrency
 ) => {
-  const loweredCaseKeyword = keyword.toLowerCase();
-  const loweredCaseName = currency.name.toLowerCase();
+  const normalisedKeyword = trimAllWhitespaces(keyword.toLowerCase());
+  const normalisedName = currency.name.toLowerCase();
+  const normalisedSymbol = currency.symbol.toLocaleLowerCase();
+  const normalisedCode = currency.code?.toLocaleLowerCase();
 
-  if (loweredCaseName.startsWith(loweredCaseKeyword)) {
-    return true;
-  }
-
-  if (currency.symbol.toLowerCase().startsWith(loweredCaseKeyword)) {
-    return true;
+  if (normalisedKeyword === '') {
+    return false;
   }
 
   if (
-    loweredCaseKeyword.startsWith(' ') &&
-    loweredCaseName.includes(loweredCaseKeyword)
+    [normalisedName, normalisedSymbol, normalisedCode].some((value) =>
+      value?.startsWith(normalisedKeyword)
+    )
   ) {
+    return true;
+  }
+
+  if (matchesSpacePrefixed(normalisedName, normalisedKeyword)) {
     return true;
   }
 

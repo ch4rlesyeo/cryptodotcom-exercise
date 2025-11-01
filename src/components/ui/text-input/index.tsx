@@ -1,7 +1,12 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { clsx } from 'clsx';
 import { useEffect, useRef, useState } from 'react';
-import { Pressable, TextInput as RNTextInput, View } from 'react-native';
+import {
+  Platform,
+  Pressable,
+  TextInput as RNTextInput,
+  View,
+} from 'react-native';
 
 import type { ITextInputProps } from '@/types/components/ui/text-input';
 
@@ -50,6 +55,15 @@ const TextInput: FC<ITextInputProps> = (props) => {
     return () => {};
   }, [autoFocus]);
 
+  const textInputClassName =
+    Platform.OS === 'ios'
+      ? clsx(
+          'h-10 flex-1',
+          'font-regular text-base/[18px]',
+          'placeholder:text-slate-400'
+        )
+      : clsx('flex-1 py-2', 'font-regular', 'placeholder:text-slate-400');
+
   return (
     <Pressable
       onPress={handlePanelPress}
@@ -60,16 +74,14 @@ const TextInput: FC<ITextInputProps> = (props) => {
         {...restProps}
         ref={textInputRef}
         value={inputValue}
+        editable={editable}
         spellCheck={false}
         autoCorrect={false}
         autoCapitalize="none"
         pointerEvents={editable ? 'auto' : 'none'}
+        textAlignVertical="center"
         onChangeText={handleInputTextChange}
-        className={clsx(
-          'h-10 flex-1',
-          'font-rubik-regular text-base/[17px]',
-          'placeholder:text-slate-400'
-        )}
+        className={textInputClassName}
       />
       {inputValue && inputValue !== '' && (
         <Pressable

@@ -7,9 +7,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import CurrencySearch from '@/screens/currency-search';
 import Home from '@/screens/home';
-import type { TStackParams } from '@/types/navigation';
-import { useCustomFonts } from '@/utils/hooks/use-custom-fonts';
-import { useSplashScreen } from '@/utils/hooks/use-splash-screen';
+import { TStackParams } from '@/types/navigation';
+import { useSplashScreen } from '@/utils/splash-screen/use-splash-screen';
 
 import { applyCssInterops } from './utils/helpers/styling';
 
@@ -19,12 +18,7 @@ SplashScreen.preventAutoHideAsync();
 applyCssInterops();
 
 export default function App() {
-  const { fontsLoaded, fontError } = useCustomFonts();
-
-  useSplashScreen({
-    fontsLoaded,
-    fontError,
-  });
+  useSplashScreen();
 
   return (
     <SafeAreaProvider>

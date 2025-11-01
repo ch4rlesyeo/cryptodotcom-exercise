@@ -2,13 +2,13 @@ import { clsx } from 'clsx';
 import { Pressable } from 'react-native';
 
 import { Text } from '@/components/ui/text';
-import type { ITabOptionInternalProps } from '@/types/components/ui/tabs/option';
+import { ITabOptionInternalProps } from '@/types/components/ui/tabs/option';
 
 const SmallTabOption: FC<ITabOptionInternalProps> = (props) => {
-  const { selected, label, value, pageIndex, onPress } = props;
+  const { selected, label, value, onPress } = props;
 
   const handleOptionPress = () => {
-    onPress?.(value, pageIndex);
+    onPress?.(value);
   };
 
   return (
@@ -18,7 +18,7 @@ const SmallTabOption: FC<ITabOptionInternalProps> = (props) => {
     >
       <Text
         className={clsx(
-          'font-rubik-medium',
+          'font-medium',
           selected ? 'text-slate-800' : 'text-slate-400'
         )}
       >

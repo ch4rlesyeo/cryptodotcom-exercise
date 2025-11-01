@@ -1,6 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-import type { ITextInputProps } from '@/types/components/ui/text-input';
+import { ITextInputProps } from '@/types/components/ui/text-input';
 
 import { TextInput } from './index';
 

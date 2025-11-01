@@ -1,12 +1,15 @@
+import { clsx } from 'clsx';
 import { Text as RNText, TextProps } from 'react-native';
 import { twMerge } from 'tailwind-merge';
 
 const Text: FC<TextProps> = (props) => {
-  const { className } = props;
+  const { className, ...restProps } = props;
 
-  return (
-    <RNText className={twMerge(className, 'font-rubik-regular')} {...props} />
+  const mergedClassName = twMerge(
+    className?.includes('font-') ? className : clsx('font-regular', className)
   );
+
+  return <RNText className={mergedClassName} {...restProps} />;
 };
 
 export { Text };

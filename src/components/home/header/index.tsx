@@ -1,6 +1,6 @@
 import { Block } from '@/components/ui/block';
 import { SearchTextInput } from '@/components/ui/text-input/search';
-import { useNavigation } from '@/utils/hooks/use-navigation';
+import { useNavigation } from '@/utils/navigation/use-navigation';
 
 const HomeHeader: FC = () => {
   const navigation = useNavigation();

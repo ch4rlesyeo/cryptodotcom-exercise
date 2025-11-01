@@ -1,23 +1,15 @@
-import { useEffect, useState } from 'react';
 import { ScrollView } from 'react-native';
 
-import type { ITabsProps } from '@/types/components/ui/tabs';
+import { ITabsProps } from '@/types/components/ui/tabs';
 
 import { TabOption } from './option';
 
 const Tabs: FC<ITabsProps> = (props) => {
   const { size = 'default', value, options, onChangeTab } = props;
 
-  const [selectedTab, setSelectedTab] = useState(value);
-
-  const handleTabOptionChange = (nextValue: string, nextPageNo: number) => {
-    setSelectedTab(nextValue);
-    onChangeTab?.(nextValue, nextPageNo);
+  const handleTabOptionChange = (nextValue: string) => {
+    onChangeTab?.(nextValue);
   };
-
-  useEffect(() => {
-    setSelectedTab(value);
-  }, [value]);
 
   return (
     <ScrollView
@@ -30,7 +22,7 @@ const Tabs: FC<ITabsProps> = (props) => {
           <TabOption
             key={option.value}
             size={size}
-            selected={option.value === selectedTab}
+            selected={option.value === value}
             onPress={handleTabOptionChange}
             {...option}
           />

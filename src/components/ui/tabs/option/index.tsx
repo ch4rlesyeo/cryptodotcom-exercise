@@ -1,4 +1,4 @@
-import type { ITabOptionInternalProps } from '@/types/components/ui/tabs/option';
+import { ITabOptionInternalProps } from '@/types/components/ui/tabs/option';
 
 import { DefaultTabOption } from './default';
 import { SmallTabOption } from './small';

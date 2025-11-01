@@ -5,10 +5,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'rubik-regular': ['Rubik_400Regular'],
-        'rubik-medium': ['Rubik_500Medium'],
-        'rubik-semibold': ['Rubik_600SemiBold'],
-        'rubik-bold': ['Rubik_700Bold'],
+        'regular': ['Rubik_400Regular'],
+        'medium': ['Rubik_500Medium'],
+        'semibold': ['Rubik_600SemiBold'],
       },
     },
   },

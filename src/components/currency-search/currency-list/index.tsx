@@ -1,11 +1,11 @@
 import { useCallback } from 'react';
 import { FlatList, ListRenderItem } from 'react-native';
 
-import { MarketCurrencyListFavouriteMarker } from '@/components/home/tabs/market/currency-list/favourite-marker';
+import { MarketCurrencyListFavouriteMarker } from '@/components/home/market/currency-list/favourite-marker';
 import { CurrencySelector } from '@/components/ui/currency/selector';
-import { cryptoCurrencies, fiatCurrencies } from '@/data/currencies';
-import type { ICurrencySearchCurrencyListProps } from '@/types/components/currency-search/currency-list';
-import type { ICurrency } from '@/types/data/currencies';
+import { cryptoCurrencies, fiatCurrencies } from '@/constants/currencies';
+import { ICurrencySearchCurrencyListProps } from '@/types/components/currency-search/currency-list';
+import { ICurrency } from '@/types/data/currencies';
 import { searchCurrencyWithKeyword } from '@/utils/helpers/search/currency';
 
 const CurrencySearchCurrencyList: FC<ICurrencySearchCurrencyListProps> = (
@@ -17,7 +17,7 @@ const CurrencySearchCurrencyList: FC<ICurrencySearchCurrencyListProps> = (
     return (
       <CurrencySelector
         currency={item}
-        prefix={<MarketCurrencyListFavouriteMarker currency={item} />}
+        suffix={<MarketCurrencyListFavouriteMarker currency={item} />}
       />
     );
   }, []);

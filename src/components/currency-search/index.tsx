@@ -4,7 +4,7 @@ import { Pressable, View } from 'react-native';
 import { Block } from '@/components/ui/block';
 import { Text } from '@/components/ui/text';
 import { SearchTextInput } from '@/components/ui/text-input/search';
-import { useNavigation } from '@/utils/hooks/use-navigation';
+import { useNavigation } from '@/utils/navigation/use-navigation';
 
 import CurrencySearchCurrencyList from './currency-list';
 
@@ -28,7 +28,7 @@ export default function CurrencySearch() {
         />
         <View className="justify-center pl-4">
           <Pressable onPress={handleCancelPress}>
-            <Text className="font-rubik-medium text-blue-600">Cancel</Text>
+            <Text className="font-semibold text-blue-600">Cancel</Text>
           </Pressable>
         </View>
       </Block>
