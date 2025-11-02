@@ -1,5 +1,9 @@
-import { homeOverviewContentsPagerRef } from '../../overview-contents';
+import { createRef } from 'react';
+import PagerView from 'react-native-pager-view';
+
 import { useHomeOverviewTabsStore } from '../stores/overview-tabs';
+
+export const homeOverviewContentsPagerRef = createRef<PagerView>();
 
 export const useHomeOverviewTabs = () => {
   const pageIndex = useHomeOverviewTabsStore((state) => state.pageIndex);

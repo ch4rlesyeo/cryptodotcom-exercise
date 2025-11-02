@@ -1,17 +1,17 @@
-import { createRef } from 'react';
 import { View } from 'react-native';
 import PagerView from 'react-native-pager-view';
 
 import { usePagerViewEvents } from '@/utils/pagerview/use-pagerview-events';
 
-import { useHomeMarketCategoryTabs } from '../category-tabs/hooks/use-category-tabs';
+import {
+  homeMarketCategoryContentsPagerRef,
+  useHomeMarketCategoryTabs,
+} from '../category-tabs/hooks/use-category-tabs';
 import { HOME_MARKET_CATEGORY_TABS } from '../category-tabs/store/category-tabs';
 
 import AllCurrenciesView from './views/all';
 import CrytoCurrenciesView from './views/crypto';
 import FiatCurrenciesView from './views/fiat';
-
-export const homeMarketCategoryContentsPagerRef = createRef<PagerView>();
 
 const HomeMarketCategoryContentsView: FC = () => {
   const { pageIndex, setPageIndex } = useHomeMarketCategoryTabs();

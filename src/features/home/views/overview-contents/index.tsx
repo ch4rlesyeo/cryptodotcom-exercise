@@ -1,16 +1,16 @@
-import { createRef } from 'react';
 import { View } from 'react-native';
 import PagerView from 'react-native-pager-view';
 
 import { usePagerViewEvents } from '@/utils/pagerview/use-pagerview-events';
 
-import { useHomeOverviewTabs } from '../overview-tabs/hooks/user-overview-tabs';
+import {
+  homeOverviewContentsPagerRef,
+  useHomeOverviewTabs,
+} from '../overview-tabs/hooks/user-overview-tabs';
 import { HOME_OVERVIEW_TABS } from '../overview-tabs/stores/overview-tabs';
 
 import FavouritesView from './views/favourites';
 import MarketView from './views/market';
-
-export const homeOverviewContentsPagerRef = createRef<PagerView>();
 
 const HomeOverviewContents: FC = () => {
   const { pageIndex, setPageIndex } = useHomeOverviewTabs();

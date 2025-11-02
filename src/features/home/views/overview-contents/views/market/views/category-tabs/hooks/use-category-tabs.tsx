@@ -1,5 +1,9 @@
-import { homeMarketCategoryContentsPagerRef } from '../../category-contents';
+import { createRef } from 'react';
+import PagerView from 'react-native-pager-view';
+
 import { useHomeMarketCategoryTabsStore } from '../store/category-tabs';
+
+export const homeMarketCategoryContentsPagerRef = createRef<PagerView>();
 
 export const useHomeMarketCategoryTabs = () => {
   const pageIndex = useHomeMarketCategoryTabsStore((state) => state.pageIndex);
