@@ -1,4 +1,4 @@
-import { ICurrency } from '@/types/data/currencies';
+import { ICurrency } from '@/models/currency';
 
 const trimAllWhitespaces = (value: string) => {
   return value.trim();

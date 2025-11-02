@@ -12,7 +12,7 @@ export const useSplashScreen = () => {
     const fontsOpsFinished = fontsLoaded || fontError;
     const storageOpsFinished = hasHydrated;
 
-    if (fontsOpsFinished || storageOpsFinished) {
+    if (fontsOpsFinished && storageOpsFinished) {
       SplashScreen.hideAsync();
     }
   }, [fontsLoaded, fontError, hasHydrated]);

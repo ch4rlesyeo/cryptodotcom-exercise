@@ -1,4 +1,4 @@
-import { ICurrency } from '@/types/data/currencies';
+import { ICurrency } from '@/models/currency';
 
 export const cryptoCurrencies: ICurrency[] = [
   {
@@ -71,6 +71,11 @@ export const cryptoCurrencies: ICurrency[] = [
     id: 'USDC',
     name: 'USD Coin',
     symbol: 'USDC',
+  },
+  {
+    id: 'DOGE',
+    name: 'Dogecoin',
+    symbol: 'DOGE',
   },
 ];
 

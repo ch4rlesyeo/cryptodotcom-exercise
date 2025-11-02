@@ -4,7 +4,10 @@ import {
   PageScrollStateChangedNativeEvent,
 } from 'react-native-pager-view';
 
-import { IUsePagerViewEventsParams } from '@/types/utils/pager-view';
+export interface IUsePagerViewEventsParams {
+  currentPageIndex: number;
+  onPageScroll: (nextPage: number) => void;
+}
 
 export const usePagerViewEvents = (params: IUsePagerViewEventsParams) => {
   const { currentPageIndex, onPageScroll } = params;

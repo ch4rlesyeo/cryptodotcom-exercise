@@ -1,6 +1,14 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { EStorageKey, type IStorageSchema } from '@/types/utils/storage';
+import { ICurrency } from '@/models/currency';
+
+export enum EStorageKey {
+  FAVOURITE_CURRENCIES = 'favouriteCurrencies',
+}
+
+export interface IStorageSchema {
+  [EStorageKey.FAVOURITE_CURRENCIES]: ICurrency[];
+}
 
 export const storage = {
   async get<K extends EStorageKey>(key: K): Promise<IStorageSchema[K] | null> {

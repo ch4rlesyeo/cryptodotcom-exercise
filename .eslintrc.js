@@ -24,6 +24,7 @@ module.exports = {
     '@typescript-eslint',
     'prettier',
     'import',
+    'boundaries',
   ],
   env: {
     'react-native/react-native': true,
@@ -59,6 +60,19 @@ module.exports = {
           'JSXAttribute[name.name="className"][value.value=/(?:\\S+\\s+){3,}/]',
         message:
           'className has 3+ classes. Consider using clsx() or classname utilities.',
+      },
+    ],
+
+    'no-restricted-imports': [
+      'error',
+      {
+        patterns: [
+          {
+            group: ['^\\.\\.\\/\\.\\.\\/'], // any import with 2 or more ../
+            message:
+              'Use a path alias (e.g. @hooks, @components) instead of deep relative paths.',
+          },
+        ],
       },
     ],
 
