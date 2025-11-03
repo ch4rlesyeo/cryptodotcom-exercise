@@ -2,6 +2,8 @@
 
 A React Native mobile application built with Expo showcasing cryptocurrency data with search, favorites, and market features.
 
+![Expo Go QR Code](./expo-go-preview-qrcode.svg)
+
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
@@ -64,12 +66,6 @@ Requires Android Studio and an Android emulator configured.
 3. Scan the QR code below with:
    - **iOS**: Use the Camera app to scan the QR code
    - **Android**: Use the Expo Go app to scan the QR code
-
-#### QR Code Preview
-
-![Expo Go QR Code](./expo-go-preview-qrcode.svg)
-
-_Note: Generate your QR code by running `npm start` and scanning the displayed QR code_
 
 ## Testing
 
