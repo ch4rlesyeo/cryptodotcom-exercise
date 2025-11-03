@@ -1,63 +1,31 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { clsx } from 'clsx';
-import { ReactNode, useEffect, useRef, useState } from 'react';
 import {
   Platform,
   Pressable,
   TextInput as RNTextInput,
-  TextInputProps,
   View,
 } from 'react-native';
 
-export interface ITextInputProps extends TextInputProps {
-  prefix?: ReactNode;
-  onPressPanel?: () => void;
+import { ITextInputProps, useTextInput } from './use-text-input';
+
+export enum ETextInputTestID {
+  INPUT = 'input',
+  INPUT_PANEL = 'input-panel',
+  CLEAR_ICON = 'clear-icon',
+  CLEAR_ICON_PRESSABLE = 'clear-icon-pressable',
 }
 
 const TextInput: FC<ITextInputProps> = (props) => {
+  const { prefix, editable = true, ...restProps } = props;
+
   const {
-    prefix,
-    editable = true,
-    defaultValue,
-    autoFocus,
-    onChangeText,
-    onPressPanel,
-    ...restProps
-  } = props;
-
-  const [inputValue, setInputValue] = useState(defaultValue);
-
-  const textInputRef = useRef<RNTextInput>(null);
-
-  const handlePanelPress = () => {
-    if (editable) {
-      textInputRef?.current?.focus();
-    }
-
-    onPressPanel?.();
-  };
-
-  const handleInputTextChange = (nextValue: string) => {
-    setInputValue(nextValue);
-    onChangeText?.(nextValue);
-  };
-
-  const handleClearInputText = () => {
-    setInputValue('');
-    onChangeText?.('');
-  };
-
-  useEffect(() => {
-    if (autoFocus) {
-      const timer = setTimeout(() => {
-        textInputRef.current?.focus();
-      }, 500);
-
-      return () => clearTimeout(timer);
-    }
-
-    return () => {};
-  }, [autoFocus]);
+    inputValue,
+    textInputRef,
+    handlePanelPress,
+    handleInputTextChange,
+    handleClearInputText,
+  } = useTextInput(props);
 
   const textInputClassName =
     Platform.OS === 'ios'
@@ -71,14 +39,17 @@ const TextInput: FC<ITextInputProps> = (props) => {
   return (
     <Pressable
       onPress={handlePanelPress}
+      testID={ETextInputTestID.INPUT_PANEL}
       className={clsx('flex-1 flex-row', 'px-4', 'bg-gray-200', 'rounded-md')}
     >
       {prefix && <View className="justify-center pr-2">{prefix}</View>}
       <RNTextInput
         {...restProps}
         ref={textInputRef}
+        testID={ETextInputTestID.INPUT}
         value={inputValue}
         editable={editable}
+        autoFocus={false}
         spellCheck={false}
         autoCorrect={false}
         autoCapitalize="none"
@@ -89,10 +60,16 @@ const TextInput: FC<ITextInputProps> = (props) => {
       />
       {inputValue && inputValue !== '' && (
         <Pressable
+          testID={ETextInputTestID.CLEAR_ICON_PRESSABLE}
           className="justify-center pl-2"
           onPress={handleClearInputText}
         >
-          <Ionicons name="close" size={20} className="text-slate-400" />
+          <Ionicons
+            testID={ETextInputTestID.CLEAR_ICON}
+            name="close"
+            size={20}
+            className="text-slate-400"
+          />
         </Pressable>
       )}
     </Pressable>

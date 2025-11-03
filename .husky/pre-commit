@@ -1,0 +1,5 @@
+# Run lint-staged to check and fix linting/formatting issues
+npm run lint:staged
+
+# Run all tests
+npm test

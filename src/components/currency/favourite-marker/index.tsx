@@ -8,12 +8,17 @@ export interface ICurrencyFavouriteMarkerProps {
   onPress: () => void;
 }
 
+export enum ECurrencyFavouriteMarker {
+  ICON = 'marker-icon',
+}
+
 const CurrencyFavouriteMarker: FC<ICurrencyFavouriteMarkerProps> = (props) => {
   const { className, isFavourite, onPress } = props;
 
   return (
     <Pressable onPress={onPress}>
       <MaterialCommunityIcons
+        testID={ECurrencyFavouriteMarker.ICON}
         name={isFavourite ? 'pin-off-outline' : 'pin-outline'}
         size={20}
         className={twMerge('text-slate-400', className)}
